@@ -2,6 +2,7 @@
 #include "bubble_sort.h"
 #include "cocktail_sort.h"
 #include "gnome_sort.h"
+#include "heap_sort.h"
 #include "insertion_sort.h"
 #include "merge_sort.h"
 #include "quick_sort.h"
@@ -9,16 +10,33 @@
 #include "selection_sort.h"
 #include "stooge_sort.h"
 
-int main() {
-	do_sort("Radix", do_radix_sort);
-	do_sort("Stooge", do_stooge_sort);
-	do_sort("Gnome", do_gnome_sort);
-	do_sort("Cocktail", do_cocktail_sort);
-	do_sort("Merge", do_merge_sort);
-	do_sort("Bubble", do_bubble_sort);
-	do_sort("Quick", do_quick_sort);
-	do_sort("Insert", do_insertion_sort);
-	do_sort("Selection", do_selection_sort);
+int main(int argc, char **argv) {
+	std::map<std::string, SortFunction> sorts = {
+		{ "heap", do_heap_sort },
+		{ "radix", do_radix_sort },
+		{ "stooge", do_stooge_sort },
+		{ "gnome", do_gnome_sort },
+		{ "cocktail", do_cocktail_sort },
+		{ "merge", do_merge_sort },
+		{ "bubble", do_bubble_sort },
+		{ "quick", do_quick_sort },
+		{ "insert", do_insertion_sort },
+		{ "selection", do_selection_sort },
+	};
+
+	if (argc > 1) {
+		for (int i = 1; i < argc; ++i) {
+			std::string sort_name = argv[i];
+			auto it = sorts.find(sort_name);
+			if (it != sorts.end()) {
+				do_sort(sort_name.c_str(), sorts[sort_name]);
+			}
+		}
+	} else {
+		for (auto it = sorts.begin(); it != sorts.end(); ++it) {
+			do_sort(it->first.c_str(), it->second);
+		}
+	}
 
 	return 0;
 }
