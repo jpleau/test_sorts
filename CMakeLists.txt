@@ -6,6 +6,7 @@ add_executable(run
 	bubble_sort.cpp
 	cocktail_sort.cpp
 	gnome_sort.cpp
+	heap_sort.cpp
 	insertion_sort.cpp
 	merge_sort.cpp
 	quick_sort.cpp
