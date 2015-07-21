@@ -9,6 +9,7 @@ add_executable(run
 	insertion_sort.cpp
 	merge_sort.cpp
 	quick_sort.cpp
+	radix_sort.cpp
 	selection_sort.cpp
 	stooge_sort.cpp
 	main.cpp
