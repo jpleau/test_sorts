@@ -2,7 +2,7 @@
 
 #include "radix_sort.h"
 
-RadixList create_radix_list(List &v, int n) {
+auto create_radix_list(List &v, int n) {
 	RadixList l;
 	for (auto i : v) {
 		int m = i % static_cast<int>(std::pow(10, n+1));
@@ -23,7 +23,6 @@ void do_radix_sort(List &v) {
 				v.push_back(i);
 			}
 		}
-		++n;
-		t = create_radix_list(v, n);
+		t = create_radix_list(v, ++n);
 	}
 }
