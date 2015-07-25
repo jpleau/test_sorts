@@ -1,3 +1,4 @@
+// {{{ Includes
 #include "base.h"
 #include "bubble_sort.h"
 #include "cocktail_sort.h"
@@ -9,6 +10,7 @@
 #include "radix_sort.h"
 #include "selection_sort.h"
 #include "stooge_sort.h"
+// }}} Includes
 
 int main(int argc, char **argv) {
 	std::map<std::string, SortFunction> sorts = {
